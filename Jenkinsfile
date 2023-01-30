@@ -40,5 +40,15 @@ pipeline{
         sh "docker build -t chaan2835/icici-jfrog-artifactory ."
       }
     }
+    stage("Docker-Push"){
+      steps{
+        sh "docker push chaan2835/icici-jfrog-artifactory"
+      }
+    }
+  }
+  post{
+    always{
+      sh "docker logout"
+    }
   }
 }

@@ -17,7 +17,9 @@ pipeline{
     stage("sonar-code-analysis"){
       steps{
         script{
-            waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+            withSonarQubeEnv(credentialsId: 'sonar-token') {
+              sh "mvn sonar:sonar"
+          }
         }
       }
     }

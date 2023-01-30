@@ -23,5 +23,12 @@ pipeline{
         }
       }
     }
+    stage("sonar-quality-check"){
+      steps{
+        script{
+          waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+        }
+      }
+    }
   }
 }

@@ -14,5 +14,12 @@ pipeline{
           sh "mvn clean package"
       }
     }
+    stage("sonar-code-analysis"){
+      steps{
+        script{
+            waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+        }
+      }
+    }
   }
 }

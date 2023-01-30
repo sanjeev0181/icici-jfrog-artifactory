@@ -30,5 +30,10 @@ pipeline{
         }
       }
     }
+    stage("Docker-login"){
+      steps{
+          sh "docker login -u chaan2835 -pChandra@2835"
+      }
+    }
   }
 }

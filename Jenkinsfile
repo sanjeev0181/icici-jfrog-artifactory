@@ -33,22 +33,8 @@ pipeline{
     stage("Docker-login"){
       steps{
           sh "docker login -u chaan2835 -pChandra@2835"
+          sh "docker build -t chaan2835/icici-jfrog-artifactory ."
+          sh "docker push chaan2835/icici-jfrog-artifactory"
       }
     }
-    stage("Docker-image-build"){
-      steps{
-        sh "docker build -t chaan2835/icici-jfrog-artifactory ."
-      }
-    }
-    stage("Docker-Push"){
-      steps{
-        sh "docker push chaan2835/icici-jfrog-artifactory"
-      }
-    }
-  }
-  post{
-    always{
-      sh "docker logout"
-    }
-  }
 }

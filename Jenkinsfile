@@ -14,6 +14,13 @@ pipeline{
           sh "mvn clean package"
       }
     }
+    stage("jfrog"){
+      steps{
+        withCredentials([usernamePassword(credentialsId: 'jfrog-creds', passwordVariable: 'Chandra@2835', usernameVariable: 'jenkins')]) {
+             sh "curl -u${ARTIFACTORY_USER}:${ARTIFACTORY_PASSWORD} -X PUT \"http://13.235.242.216:8081/artifactory/webapp/libs-snapshot-local/${env.BUILD_NUMBER}/my-artifact-${env.BUILD_NUMBER}.jar\" -T funds-1.0-SNAPSHOT.war"
+        }
+      }
+    }
     stage("sonar-code-analysis"){
       steps{
         script{

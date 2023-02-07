@@ -24,7 +24,7 @@ pipeline{
         }
       }
     }
-    /*stage("sonar-code-analysis"){
+    stage("sonar-code-analysis"){
       steps{
         script{
             withSonarQubeEnv(credentialsId: 'sonar-token') {
@@ -46,6 +46,6 @@ pipeline{
           sh "docker build -t chaan2835/icici-jfrog-artifactory ."
           sh "docker push chaan2835/icici-jfrog-artifactory"
           }
-      }*/
+      }
     }
 }

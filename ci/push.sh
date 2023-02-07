@@ -1,5 +1,7 @@
 #/bin/bash
-cd /root/.jenkins/workspace/icici-build-sonartest-docker/target
+echo "/root/.jenkins/workspace/icici-build-sonartest-docker/target/"
+cd /root/.jenkins/workspace/icici-build-sonartest-docker/target/
+echo "ls -lrt"
 ls -lh 
 artifact_file_name=`ls *.war`
 echo "file name: $artifact_file_name"

@@ -48,7 +48,7 @@ pipeline{
           script{
             def DOCKER_IMAGE_ID = sh(returnStdout: true, script: 'docker images --format "{{.ID}}" chaan2835/icici-jfrog-artifactory:latest').trim()
             
-            sh "docker run -d $DOCKER_IMAGE_ID /bin/bash"
+            sh "docker run -it --name icici-docker-jfrog $DOCKER_IMAGE_ID  /bin/bash"
                  }
             }
         }

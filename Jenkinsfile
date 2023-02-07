@@ -45,7 +45,7 @@ pipeline{
           sh "docker login -u chaan2835 -pChandra@2835"
           sh "docker build -t chaan2835/icici-jfrog-artifactory ."
           sh "docker push chaan2835/icici-jfrog-artifactory"
-          # def docker-image-id= sh(returnStdout: true, script: 'docker inspect --format="{{.Id}}" chaan2835/icici-jfrog-artifactory').trim()
+          /*def docker-image-id= sh(returnStdout: true, script: 'docker inspect --format="{{.Id}}" chaan2835/icici-jfrog-artifactory').trim()*/
             def imageId = sh(returnStdout: true, script: 'docker inspect --format="{{.Id}}" chaan2835/icici-jfrog-artifactory').trim()
 
           sh "docker run -it $imageId /bin/bash"

@@ -48,9 +48,9 @@ pipeline{
           /*def docker-image-id= sh(returnStdout: true, script: 'docker inspect --format="{{.Id}}" chaan2835/icici-jfrog-artifactory').trim()*/
         script{
             def DOCKER_IMAGE_ID = sh(returnStdout: true, script: 'docker images --format "{{.ID}}" chaan2835/icici-jfrog-artifactory:latest').trim()
+            sh "docker run -it $DOCKER_IMAGE_ID /bin/bash"
               }
-          sh "docker run -it $DOCKER_IMAGE_ID /bin/bash"
-          }
+            }
         }
     }
 }

@@ -45,7 +45,7 @@ pipeline{
           sh "docker login -u chaan2835 -pChandra@2835"
           sh "docker build -t chaan2835/icici-jfrog-artifactory ."
           sh "docker push chaan2835/icici-jfrog-artifactory"
-          sh "docker run -p 90:8080 -d --name icici-docker-image chaan2835/icici-jfrog-artifactory"
+        sh "docker run -p 90:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
           /*script{
             def DOCKER_IMAGE_ID = sh(returnStdout: true, script: 'docker images --format "{{.ID}}" chaan2835/icici-jfrog-artifactory:latest').trim()
             

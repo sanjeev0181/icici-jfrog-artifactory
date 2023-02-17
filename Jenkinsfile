@@ -53,10 +53,10 @@ pipeline{
           sh "docker login -u chaan2835 -pChandra@2835"
           sh "docker build -t chaan2835/icici-jfrog-artifactory ."
           sh "docker push chaan2835/icici-jfrog-artifactory"
-          def DOCKER_PORT = $({env.BUILD_NUMBER}+1)
-          
-          echo "DOCKER_PORT"
-          
+        script{
+          def DOCKER_PORT = ${env.BUILD_NUMBER}
+          echo "$DOCKER_PORT"
+         }
           sh "docker run -p ${DOCKER_PORT}:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
           }
         }       

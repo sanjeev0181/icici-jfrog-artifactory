@@ -16,7 +16,7 @@ pipeline{
     }
     stage("jfrog"){
       steps{
-        withCredentials([usernamePassword(credentialsId: 'jfrog-creds', passwordVariable: 'Chandra@2835', usernameVariable: 'jenkins')]) {
+         withCredentials([usernamePassword(credentialsId: 'jfrog-creds', passwordVariable: 'Chandra@2835', usernameVariable: 'jenkins')]) {
              echo "jfrog stage"
              sh "chmod +x ci/"
              sh "chmod +x ci/push.sh"

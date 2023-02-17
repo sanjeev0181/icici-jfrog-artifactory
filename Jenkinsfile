@@ -53,7 +53,7 @@ pipeline{
           sh "docker login -u chaan2835 -pChandra@2835"
           sh "docker build -t chaan2835/icici-jfrog-artifactory ."
           sh "docker push chaan2835/icici-jfrog-artifactory"
-          def DOCKER_PORT = $(90+RANDOM%1000)
+          def DOCKER_PORT = $({env.BUILD_NUMBER}+1)
           
           echo "DOCKER_PORT"
           

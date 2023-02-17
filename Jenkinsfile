@@ -54,9 +54,9 @@ pipeline{
           sh "docker build -t chaan2835/icici-jfrog-artifactory ."
           sh "docker push chaan2835/icici-jfrog-artifactory"
         script{
-          def DOCKER_PORT = env.BUILD_NUMBER.toInteger()
-          echo "$DOCKER_PORT"
-          sh "docker run -p ${DOCKER_PORT}:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
+          def DOCKER_CONTAINER_PORT = env.BUILD_NUMBER.toInteger()
+          echo "$DOCKER_CONTAINER_PORT"
+          sh "docker run -p ${DOCKER_CONTAINER_PORT}:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
             }
         
           }

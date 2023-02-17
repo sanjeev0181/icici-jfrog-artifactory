@@ -56,7 +56,9 @@ pipeline{
           environment {
             DOCKER_PORT = sh(script: 'echo $((90 + RANDOM % 1000))', returnStdout: true).trim()
           }
-          sh "docker run -p ${DOCKER_PORT}:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
+        steps{
+        sh "docker run -p ${DOCKER_PORT}:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
+              }
           
             }
         }

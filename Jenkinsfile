@@ -55,7 +55,7 @@ pipeline{
           sh "docker push chaan2835/icici-jfrog-artifactory"
           }
         }
-    stage("Dkr-Port-nu")
+    stage("Dkr-Port-nu") {
       steps{
         environment {
             DOCKER_PORT = sh(script: 'echo $((90 + RANDOM % 1000))', returnStdout: true).trim()
@@ -65,4 +65,5 @@ pipeline{
              }
       }
     }
+  }
 }

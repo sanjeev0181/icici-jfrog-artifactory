@@ -56,8 +56,9 @@ pipeline{
         script{
           def DOCKER_PORT = env.BUILD_NUMBER.toInteger()
           echo "$DOCKER_PORT"
-         }
-        sh "docker run -p ${DOCKER_PORT}:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
+          sh "docker run -p ${DOCKER_PORT}:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
+            }
+        
           }
         }       
      }

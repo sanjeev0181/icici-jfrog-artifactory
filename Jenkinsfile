@@ -43,9 +43,8 @@ pipeline{
     stage("sonar report"){
       steps{
         script{
-          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: 'target/sonar/*.html', 
-                       keepAll: false, reportDir: 'target/sonar', reportFiles: 'index.html', reportName: 'Sonar Report', reportTitles: '', 
-                       useWrapperFileDirectly: true])
+          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/sonar/*.txt', reportFiles: 'report-task.txt',
+                       reportName: 'SONAR Report', reportTitles: '', useWrapperFileDirectly: true])
         }
       }
     }

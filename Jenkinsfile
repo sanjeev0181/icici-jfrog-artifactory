@@ -40,14 +40,14 @@ pipeline{
         }
       }
     }
-    stage("sonar report"){
+    /*stage("sonar report"){
       steps{
         script{
          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: 'target/sonar/index.html', keepAll: true, reportDir: 'target/sonar',
                       reportFiles: 'index.html', reportName: 'SONAR Report', reportTitles: '', useWrapperFileDirectly: true])
         }
       }
-    }
+    }*/
     stage("Docker-login"){
       steps{
           sh "docker login -u chaan2835 -pChandra@2835"

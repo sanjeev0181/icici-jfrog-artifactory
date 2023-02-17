@@ -53,12 +53,9 @@ pipeline{
           sh "docker login -u chaan2835 -pChandra@2835"
           sh "docker build -t chaan2835/icici-jfrog-artifactory ."
           sh "docker push chaan2835/icici-jfrog-artifactory"
-        sh "docker run -p 91:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
-          /*script{
-            def DOCKER_IMAGE_ID = sh(returnStdout: true, script: 'docker images --format "{{.ID}}" chaan2835/icici-jfrog-artifactory:latest').trim()
-            
-            sh "docker run -it --name icici-docker-jfrog $DOCKER_IMAGE_ID  /bin/bash, tty:true"
-                 }*/
+          DOCKER_PORT = sh(script: 'echo $((90 + RANDOM % 1000))', returnStdout: true).trim()
+          sh "docker run -p ${DOCKER_PORT}:8080 -d --name ${env.JOB_NAME}-${env.BUILD_NUMBER} chaan2835/icici-jfrog-artifactory"
+          
             }
         }
     }
